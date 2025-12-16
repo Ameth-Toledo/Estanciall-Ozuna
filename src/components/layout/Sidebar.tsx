@@ -86,7 +86,8 @@ function Sidebar() {
         ref={headerRef}
         className="p-6 border-b border-gray-200"
       >
-        <h1 className="text-xl font-semibold text-gray-900">Sistema Encuestas</h1>
+        <h1 className="text-xl font-semibold text-gray-900 text-center">Sistema Encuestas</h1>
+        <img src="/assets/tux.webp" alt="Logo" className="mt-2 w-24 h-24 mx-auto" />
       </div>
       
       <nav className="flex-1 overflow-y-auto p-4">

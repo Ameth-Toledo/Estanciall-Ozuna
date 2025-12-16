@@ -3,7 +3,7 @@ import { cn } from "@/utils/cn"
 
 function FeaturesSection() {
   return (
-    <div className="bg-white py-20 px-8 relative">
+    <div id="features" className="bg-white py-20 px-8 relative">
       <div
         className={cn(
           "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
