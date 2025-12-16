@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { 
   BarChart2, 
   Home, 
   Settings, 
   Upload,
-  FileCheck
+  FileCheck,
+  Database,
+  ChevronDown
 } from "lucide-react"
 
 function Sidebar() {
@@ -14,6 +16,7 @@ function Sidebar() {
   const navItemsRef = useRef<(HTMLAnchorElement | null)[]>([])
   const headerRef = useRef<HTMLDivElement>(null)
   const footerRef = useRef<HTMLDivElement>(null)
+  const [isVariablesOpen, setIsVariablesOpen] = useState(false)
 
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
@@ -21,6 +24,13 @@ function Sidebar() {
     { path: '/dashboard/surveys', label: 'Encuestas', icon: FileCheck },
     { path: '/dashboard/upload', label: 'Subir Archivos', icon: Upload },
     { path: '/dashboard/settings', label: 'Configuración', icon: Settings },
+  ]
+
+  const variables = [
+    { path: '/dashboard/variables/1', label: 'Variable 1' },
+    { path: '/dashboard/variables/2', label: 'Variable 2' },
+    { path: '/dashboard/variables/3', label: 'Variable 3' },
+    { path: '/dashboard/variables/4', label: 'Variable 4' },
   ]
 
   useEffect(() => {
@@ -110,6 +120,47 @@ function Sidebar() {
             <span>{item.label}</span>
           </NavLink>
         ))}
+
+        {/* Variables Dropdown */}
+        <div className="mb-1">
+          <button
+            onClick={() => setIsVariablesOpen(!isVariablesOpen)}
+            className="w-full flex items-center justify-between gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <Database className="w-5 h-5" />
+              <span>Variables</span>
+            </div>
+            <ChevronDown 
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isVariablesOpen ? 'rotate-180' : ''
+              }`}
+            />
+          </button>
+
+          {/* Submenu */}
+          <div 
+            className={`overflow-hidden transition-all duration-300 ${
+              isVariablesOpen ? 'max-h-48' : 'max-h-0'
+            }`}
+          >
+            <div className="pl-11 space-y-1 mt-1">
+              {variables.map((variable) => (
+                <NavLink
+                  key={variable.path}
+                  to={variable.path}
+                  className={({ isActive }) =>
+                    `block px-4 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 transition-colors ${
+                      isActive ? 'bg-blue-50 text-blue-600 font-medium' : ''
+                    }`
+                  }
+                >
+                  {variable.label}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        </div>
       </nav>
 
       <div 
