@@ -1,7 +1,11 @@
 import QuestionCard from "@/components/ui/QuestionCard"
 import { FileCheck } from "lucide-react"
+import { useNavigate } from "react-router-dom"
+import { slugify } from "@/utils/slugify"
 
 function Surveys() {
+  const navigate = useNavigate()
+
   const surveys = [
     {
       id: 1,
@@ -21,8 +25,9 @@ function Surveys() {
   ]
 
   const handleAddSurvey = () => {
-    console.log("Agregar nueva encuesta")
-    // Aquí irá la lógica para agregar encuesta
+    const newSurveyId = Date.now() 
+    const slug = slugify("Nueva Encuesta")
+    navigate(`/dashboard/surveys/${newSurveyId}/${slug}/questions`)
   }
 
   return (
@@ -42,6 +47,7 @@ function Surveys() {
         {surveys.map((survey) => (
           <QuestionCard
             key={survey.id}
+            id={survey.id}
             number={survey.id}
             title={survey.title}
             description={survey.description}

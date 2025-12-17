@@ -1,12 +1,26 @@
+import { useNavigate } from 'react-router-dom'
+import { slugify } from '@/utils/slugify'
+
 interface QuestionCardProps {
+  id: number
   number: number
   title: string
   description: string
 }
 
-function QuestionCard({ number, title, description }: QuestionCardProps) {
+function QuestionCard({ id, number, title, description }: QuestionCardProps) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    const slug = slugify(title)
+    navigate(`/dashboard/surveys/${id}/${slug}/questions`)
+  }
+
   return (
-    <div className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden">
+    <div 
+      onClick={handleClick}
+      className="w-64 bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-9 space-y-3 relative overflow-hidden cursor-pointer hover:shadow-[0px_0px_20px_rgba(0,0,0,0.15)] transition-shadow"
+    >
       <div className="w-24 h-24 bg-black rounded-full absolute -right-5 -top-7">
         <p className="absolute bottom-6 left-7 text-white text-2xl">
           {number.toString().padStart(2, '0')}

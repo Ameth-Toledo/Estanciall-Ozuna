@@ -5,6 +5,7 @@ import Overview from './pages/dashboard/Overview'
 import Surveys from './pages/dashboard/Surveys'
 import UploadFiles from './pages/dashboard/UploadFiles'
 import Settings from './pages/dashboard/Settings'
+import Questions from './pages/dashboard/Questions'
 
 function App() {
   return (
@@ -17,6 +18,13 @@ function App() {
         <Route path="surveys" element={<Surveys />} />
         <Route path="upload" element={<UploadFiles />} />
         <Route path="settings" element={<Settings />} />
+        <Route path='surveys/:id/:slug/questions' element={<Questions />} />
+        <Route path="indicadores/ansiedad" element={<div className="text-2xl font-bold">Ansiedad</div>} />
+        <Route path="indicadores/depresion" element={<div className="text-2xl font-bold">Depresion</div>} />
+        <Route path="indicadores/estres" element={<div className="text-2xl font-bold">Estres</div>} />
+        <Route path="indicadores/conductual" element={<div className="text-2xl font-bold">Conductual</div>} />
+        <Route path="indicadores/somatizacion" element={<div className="text-2xl font-bold">Somatizacion</div>} />
+        <Route path="indicadores/tdah" element={<div className="text-2xl font-bold">TDAH</div>} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
