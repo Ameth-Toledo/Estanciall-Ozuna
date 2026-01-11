@@ -8,7 +8,8 @@ import {
   Upload,
   FileCheck,
   Activity,
-  ChevronDown
+  ChevronDown,
+  FolderOpen 
 } from "lucide-react"
 
 function Sidebar() {
@@ -24,6 +25,7 @@ function Sidebar() {
     { path: '/dashboard/surveys', label: 'Encuestas', icon: FileCheck },
     { path: '/dashboard/upload', label: 'Subir Archivos', icon: Upload },
     { path: '/dashboard/settings', label: 'Configuración', icon: Settings },
+    { path: '/dashboard/files', label: 'Ver Archivos', icon: FolderOpen  }
   ]
 
   const indicadores = [

@@ -8,6 +8,7 @@ import Settings from './pages/dashboard/Settings'
 import Questions from './pages/dashboard/Questions'
 import Ansiedad from './pages/dashboard/Ansiedad'
 import Depresion from './pages/dashboard/Depresion'
+import ViewFiles from './pages/dashboard/ViewFiles'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="surveys" element={<Surveys />} />
         <Route path="upload" element={<UploadFiles />} />
         <Route path="settings" element={<Settings />} />
+        <Route path='files' element={< ViewFiles />} />
         <Route path='surveys/:id/:slug/questions' element={<Questions />} />
         <Route path="indicadores/ansiedad" element={<Ansiedad />} />
         <Route path="indicadores/depresion" element={<Depresion />} />
